@@ -8,7 +8,7 @@ const ScreeningPage = () => {
     {
       title: "Understanding Breast Anatomy",
       description: "Learn the basic structure of the breast to identify abnormalities during screening.",
-      videoUrl: "https://example.com/video1",
+      videoUrl: "https://www.youtube.com/watch?v=6SAhNkuAF_4",
     },
     {
       title: "Step 1: Visual Inspection",
