@@ -7,27 +7,32 @@ const ScreeningPage = () => {
   const lessons = [
     {
       title: "Understanding Breast Anatomy",
-      description: "Learn the basic structure of the breast to identify abnormalities during screening.",
+      description:
+        "Learn the basic structure of the breast to identify abnormalities during screening.",
       videoUrl: "https://www.youtube.com/watch?v=6SAhNkuAF_4",
     },
     {
       title: "Step 1: Visual Inspection",
-      description: "Learn how to visually inspect your breasts for any changes in size, shape, or skin texture.",
+      description:
+        "Learn how to visually inspect your breasts for any changes in size, shape, or skin texture.",
       videoUrl: "https://example.com/video2",
     },
     {
       title: "Step 2: Manual Examination",
-      description: "Learn proper techniques to feel for lumps or unusual masses in different parts of the breast.",
+      description:
+        "Learn proper techniques to feel for lumps or unusual masses in different parts of the breast.",
       videoUrl: "https://example.com/video3",
     },
     {
       title: "Step 3: Screening in Front of a Mirror",
-      description: "Learn to screen effectively using reflections to identify symmetry and skin texture.",
+      description:
+        "Learn to screen effectively using reflections to identify symmetry and skin texture.",
       videoUrl: "https://example.com/video4",
     },
     {
       title: "Step 4: Lying Down Position",
-      description: "Learn how to screen while lying down for better coverage of breast tissue.",
+      description:
+        "Learn how to screen while lying down for better coverage of breast tissue.",
       videoUrl: "https://example.com/video5",
     },
   ];
@@ -47,11 +52,13 @@ const ScreeningPage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-r from-pink-50 to-purple-100 flex flex-col">
-      <Navbar/>
+      <Navbar />
       {/* Top Section */}
       <div className="p-8 text-center bg-pink-500 text-white shadow-lg">
         <h1 className="text-3xl font-bold">Breast Self-Screening Guide</h1>
-        <p className="mt-4 text-lg">Follow these lessons to screen your breasts at home effectively.</p>
+        <p className="mt-4 text-lg">
+          Follow these lessons to screen your breasts at home effectively.
+        </p>
         <div className="mt-6">
           <button
             onClick={generateHealthTip}
@@ -69,11 +76,15 @@ const ScreeningPage = () => {
 
       {/* Bottom Section */}
       <div className="p-8 lg:px-20 pb-20">
-        <h2 className="text-2xl font-bold text-pink-700 mb-6">Screening Sessions</h2>
+        <h2 className="text-2xl font-bold text-pink-700 mb-6">
+          Screening Sessions
+        </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {lessons.map((lesson, index) => (
             <div key={index} className="bg-white shadow-lg rounded-lg p-6">
-              <h3 className="text-lg font-bold text-purple-700 mb-2">{lesson.title}</h3>
+              <h3 className="text-lg font-bold text-purple-700 mb-2">
+                {lesson.title}
+              </h3>
               <p className="text-sm text-gray-700 mb-4">{lesson.description}</p>
               <a
                 href={lesson.videoUrl}
@@ -89,6 +100,6 @@ const ScreeningPage = () => {
       </div>
     </div>
   );
-}
+};
 
-export default ScreeningPage
+export default ScreeningPage;
