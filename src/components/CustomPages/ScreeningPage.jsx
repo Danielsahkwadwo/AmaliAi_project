@@ -54,7 +54,7 @@ const ScreeningPage = () => {
     <div className="min-h-screen bg-gradient-to-r from-pink-50 to-purple-100 flex flex-col">
       <Navbar />
       {/* Top Section */}
-      <div className="p-8 text-center bg-pink-500 text-white shadow-lg">
+      <div className="p-8 text-center bg-pink-500 text-white shadow-lg max-md:mt-20">
         <h1 className="text-3xl font-bold">Breast Self-Screening Guide</h1>
         <p className="mt-4 text-lg">
           Follow these lessons to screen your breasts at home effectively.

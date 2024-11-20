@@ -4,9 +4,11 @@ import Header from "./Header";
 
 function LandingPage() {
   return (
-    <div className="bg-gradient-to-r from-purple-200 via-purple-100 to-pink-200 h-screen">
+    <div className="bg-gradient-to-r from-purple-200 via-purple-100 to-pink-200 md:h-screen max-md:h-auto">
       <Navbar />
+      <div  className="max-md:pt-20">
       <Header />
+      </div>
       {/* <Footer /> */}
     </div>
   );

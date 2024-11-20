@@ -47,7 +47,7 @@ function ChatPage() {
     <div className="min-h-screen bg-gradient-to-r from-purple-100 via-pink-100 to-purple-200 flex flex-col">
       <Navbar/>
       {/* Header Section */}
-      <div className="bg-pink-500 text-white py-4 px-6 text-center shadow-md ">
+      <div className="bg-pink-500 text-white py-4 px-6 text-center shadow-md max-md:mt-20">
         <h1 className="text-2xl font-semibold">Breast Cancer AI Chatbot</h1>
         <p className="text-sm mt-1">
           Ask questions or get advice about breast health.

@@ -1,8 +1,20 @@
 import { Link } from "react-router-dom";
+import Navbar from "../HomePage/Navbar";
+import useScreenWidth from "../../CustomHooks/useScreenWidth";
 
 function Signup() {
+  const Width = useScreenWidth();
+
+  let show;
+  if (Width <= 768) {
+    show = true;
+  } else {
+    show = false;
+  }
+
   return (
-    <div className="min-h-screen flex flex-col lg:flex-row bg-gradient-to-r from-pink-300 via-purple-300 to-pink-200">
+    <div className="min-h-screen flex flex-col lg:flex-row bg-gradient-to-r from-pink-300 via-purple-300 to-pink-200 max-md:pb-10">
+      {show && <Navbar />}
       {/* Left Image */}
       <div className="hidden lg:flex lg:w-1/2 items-center justify-center">
         <img
@@ -13,7 +25,7 @@ function Signup() {
       </div>
 
       {/* Form Section */}
-      <div className="flex flex-col items-center justify-center lg:w-1/2 px-8 py-12 bg-white rounded-lg shadow-lg">
+      <div className="flex flex-col items-center justify-center lg:w-1/2 px-8 py-12 bg-white rounded-lg shadow-lg max-md:mx-3 max-md:mt-24">
         <h2 className="text-3xl font-bold text-pink-700 mb-6">Sign Up</h2>
         <form className="w-full max-w-md space-y-6">
           {/* Email */}
@@ -88,7 +100,7 @@ function Signup() {
             Sign Up
           </button>
         </form>
-        <div className="text-left mt-2">
+        <div className="text-left mt-2 max-sm:mt-5">
           <p className="font-semibold">
             Already registered?{" "}
             <Link className="text-pink-700" to={"/login"}>

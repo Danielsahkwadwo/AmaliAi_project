@@ -5,3 +5,15 @@
   margin: 0;
   box-sizing: border-box;
 }
+
+@media only screen and (max-width:768px){
+  .nav--links{
+    clip-path: circle(100px at 95% -20%);
+    -webkit-clip-path:  circle(100px at 95% -20%);
+    transition: all 1s ease-out;
+  }
+  .nav--links.open{
+    clip-path: circle(1000px at 95% -20%);
+    -webkit-clip-path:  circle(1000px at 95% -20%);
+  }
+}

@@ -20,7 +20,7 @@ function ScanImage() {
     <div className="min-h-screen bg-gradient-to-r from-purple-100 via-pink-100 to-purple-200">
       <Navbar/>
       {/* Header Section */}
-      <div className="flex flex-col items-center text-center py-12 bg-pink-200 max-md:px-5 max-sm:px-4">
+      <div className="flex flex-col items-center text-center py-12 bg-pink-200 max-md:px-5 max-sm:px-4 max-md:pt-32">
         <img
           src="/Breast-Cancer-Ribbon-PNG-Image (1).png"
           alt="Breast Cancer Awareness"
