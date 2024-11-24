@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Navbar from "../HomePage/Navbar";
 import axios from "axios";
 import AppLoader from "../Reusable/AppLoader";
+import toast from 'react-hot-toast';
 
 const ScreeningPage = () => {
   const [healthTip, setHealthTip] = useState("");
@@ -62,6 +63,7 @@ const ScreeningPage = () => {
       }
     } catch (error) {
       console.log(error);
+      return toast.error('An error occurred')
     } finally {
       setIsLoading(false);
     }

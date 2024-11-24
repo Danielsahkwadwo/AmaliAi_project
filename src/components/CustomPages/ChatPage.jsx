@@ -5,6 +5,7 @@ import ReactMarkdown from "react-markdown";
 import "./styles.css";
 import Navbar from "../HomePage/Navbar";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 function ChatPage() {
   const [messages, setMessages] = useState([]);
@@ -31,6 +32,7 @@ function ChatPage() {
       }
     } catch (error) {
       console.log(error);
+      return toast.error("An error occurred");
     } finally {
       setIsLoading(false);
     }

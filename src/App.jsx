@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { lazy } from "react";
 import { Suspense } from "react";
+import { Toaster } from 'react-hot-toast';
 import AppLoader from "./components/Reusable/AppLoader";
 
 
@@ -53,6 +54,10 @@ function App() {
             </Suspense>
             } />
         </Routes>
+        <Toaster
+          position="top-center"
+          reverseOrder={false}
+        />
       </BrowserRouter>
     </>
   );
