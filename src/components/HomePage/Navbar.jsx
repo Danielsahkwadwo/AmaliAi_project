@@ -13,7 +13,7 @@ function Navbar() {
       navLinks.classList.toggle("open")
   }
   return (
-    <nav className="flex justify-between items-center p-4 max-md:fixed max-md:w-full max-md:bg-gradient-to-r max-md:from-purple-200 max-md:via-purple-100 max-md:to-pink-200 z-20">
+    <nav className="flex justify-between items-center p-4 max-md:fixed max-md:w-full max-md:bg-gradient-to-r max-md:from-purple-200 max-md:via-purple-100 max-md:to-pink-200 z-20 bg-gradient-to-r from-purple-200 via-purple-100 to-pink-200">
       <div className="text-2xl font-bold text-pink-700">
         <Link to={'/'}>
         <img
