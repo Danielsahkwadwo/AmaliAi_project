@@ -17,3 +17,12 @@
     -webkit-clip-path:  circle(1000px at 95% -20%);
   }
 }
+
+/* Target the dropdown trigger specifically */
+.dropdown > button {
+  background-color: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  box-shadow: none !important;
+}
