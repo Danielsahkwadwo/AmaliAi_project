@@ -55,6 +55,7 @@ const AuthReducer = (state, action) => {
       };
     case RESET:
       return {
+        ...state,
         isLoading: false,
         isSuccess: false,
         isError: false,
