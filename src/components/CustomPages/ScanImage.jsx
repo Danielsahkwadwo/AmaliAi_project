@@ -1,24 +1,83 @@
 import { useState } from "react";
 import { BiCloudUpload } from "react-icons/bi";
 import Navbar from "../HomePage/Navbar";
+import toast from "react-hot-toast";
+import axios from "axios";
+import AppLoader from "../Reusable/AppLoader";
+import useRedirect from "../../CustomHooks/useRedirect";
 
 function ScanImage() {
+  useRedirect("/login")
   const [image, setImage] = useState(null);
   const [result, setResult] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [imageData, setImageData] = useState("");
 
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
+    setImageData(file);
     if (file) {
       setImage(URL.createObjectURL(file));
-      // setTimeout(() => {
-      //   setResult("No signs of breast cancer detected.");
-      // }, 2000);
+    }
+  };
+
+  const sendResponseToAmaliAi = async (imageResponse) => {
+    try {
+      const { probability, prediction } = imageResponse;
+      const response = await axios({
+        method: "POST",
+        url: "https://ai-api.amalitech.org/api/v1/public/chat",
+        headers: { "X-Api-Key": "ZEXeGOk5_kMel9l7EzrWblpzbHM2P5FZ" },
+        data: {
+          prompt: `As a breast cancer specialist, i want you to interprate a breast momograph image scan that resulted in a prediction of ${prediction} and a probability of ${probability}. try to explain it in simple terms so that it will be quite understandable`,
+          stream: false,
+        },
+      });
+      if (response.data) {
+        setResult(response.data.data.content);
+        // console.log(response.data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const submitImage = async (e) => {
+    e.preventDefault();
+    setIsLoading(true);
+    try {
+      if (!image) {
+        return toast.error("please upload an image");
+      }
+      const formData = new FormData();
+      formData.append("image", imageData);
+
+      console.log(Array.from(formData));
+      const res = await axios.post(
+        "https://breast-cancer-detection-vckt.onrender.com/predict/",
+        formData,
+        {
+          headers: { "Content-Type": "multipart/form-data" },
+        }
+      );
+      if (res.data) {
+        // console.log(res);
+        const probability = res.data.probability;
+        const prediction = res.data.prediction;
+        await sendResponseToAmaliAi({ probability, prediction });
+      }
+    } catch (error) {
+      console.log(error);
+      return toast.error(error.message);
+    } finally {
+      setIsLoading(false);
     }
   };
 
   return (
     <div className="min-h-screen bg-gradient-to-r from-purple-100 via-pink-100 to-purple-200">
-      <Navbar/>
+      <Navbar />
+      {isLoading && <AppLoader />}
       {/* Header Section */}
       <div className="flex flex-col items-center text-center py-12 bg-pink-200 max-md:px-5 max-sm:px-4 max-md:pt-32">
         <img
@@ -60,8 +119,12 @@ function ScanImage() {
                 accept="image/*"
                 onChange={handleImageUpload}
                 className="hidden"
+                files={imageData}
               />
-              <button className="bg-pink-700 hover:bg-pink-600 transition-all duration-300 text-white px-10 py-4 rounded-md max-sm:w-full">
+              <button
+                onClick={submitImage}
+                className="bg-pink-700 hover:bg-pink-600 transition-all duration-300 text-white px-10 py-4 rounded-md max-sm:w-full"
+              >
                 Scan Now
               </button>
             </div>

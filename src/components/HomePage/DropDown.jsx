@@ -1,13 +1,12 @@
 "use client";
 
 import { Dropdown } from "flowbite-react";
-import { HiCog, HiUserCircle, HiLogout} from "react-icons/hi";
+import { HiCog, HiUserCircle, HiLogout } from "react-icons/hi";
 import "./styles.css";
 
-export default function DropDown() {
+export default function DropDown({ data, logout }) {
   const customTheme = {
-    inlineWrapper:
-      " bg-transparent  text-center inline-flex items-center",
+    inlineWrapper: " bg-transparent  text-center inline-flex items-center",
   };
 
   return (
@@ -25,15 +24,22 @@ export default function DropDown() {
       theme={customTheme}
     >
       <Dropdown.Header>
-        <span className="block text-sm">DannyQuan</span>
+        <span className="block text-sm">{data?.name}</span>
         <span className="block truncate text-sm font-medium">
-          daniel.sah@amalitech.com
+          {data?.email}
         </span>
       </Dropdown.Header>
       <Dropdown.Item icon={HiUserCircle}>Profile</Dropdown.Item>
       <Dropdown.Item icon={HiCog}>Settings</Dropdown.Item>
       <Dropdown.Divider />
-      <Dropdown.Item icon={HiLogout}>Sign out</Dropdown.Item>
+      <Dropdown.Item
+        icon={HiLogout}
+        onClick={async () => {
+          await logout();
+        }}
+      >
+        Sign out
+      </Dropdown.Item>
     </Dropdown>
   );
 }

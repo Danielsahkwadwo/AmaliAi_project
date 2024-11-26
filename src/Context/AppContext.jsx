@@ -11,7 +11,7 @@ import {
   ON_FULFILLED_LOGIN,
   ON_FULFILLED_SIGNUP,
   ON_FORGOT_PASSWORD,
-} from "./Auth/authActions";
+} from "./AuthActions";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
@@ -24,6 +24,8 @@ const initialVariables = {
   activeUser: {},
 };
 
+const defaultURL = "https://booby-buddy-api.onrender.com/api/users";
+
 export const AppContext = ({ children }) => {
   const [state, dispatch] = useReducer(authReducer, initialVariables);
   const navigate = useNavigate();
@@ -31,7 +33,9 @@ export const AppContext = ({ children }) => {
   const getLoginStatus = async () => {
     dispatch({ type: ON_PENDING });
     try {
-      const response = await axios.get("/users/loginStatus");
+      const response = await axios.get(`${defaultURL}/isLoggedIn`, {
+        withCredentials: true,
+      });
       if (response) {
         // console.log(response);
         dispatch({ type: ON_FULFILLED, payload: response.data });
@@ -42,7 +46,7 @@ export const AppContext = ({ children }) => {
       dispatch({ type: ON_REJECTED });
 
       if (error && error.response) {
-        toast.error(error.response.data.message ?? error.response.data);
+        toast.error(error.response.data.error ?? error.response.data);
       } else {
         toast.error(error.message);
       }
@@ -55,8 +59,9 @@ export const AppContext = ({ children }) => {
     try {
       const response = await axios({
         method: "POST",
-        url: "/users/login",
+        url: `${defaultURL}/login`,
         data: userData,
+        withCredentials: true,
       });
       if (response) {
         // console.log(response);
@@ -69,9 +74,8 @@ export const AppContext = ({ children }) => {
       return;
     } catch (error) {
       dispatch({ type: ON_REJECTED });
-      // console.log(error.response.data.message)
       if (error && error.response) {
-        toast.error(error.response.data.message ?? error.response.data);
+        toast.error(error.response.data.error ?? error.response.data);
       } else {
         toast.error(error.message);
       }
@@ -83,8 +87,8 @@ export const AppContext = ({ children }) => {
     dispatch({ type: ON_PENDING });
     try {
       const response = await axios({
-        method: "POST",
-        url: "/users/logout",
+        method: "GET",
+        url: `${defaultURL}/logout`,
         withCredentials: true,
       });
       if (response) {
@@ -92,7 +96,9 @@ export const AppContext = ({ children }) => {
       }
       dispatch({ type: LOGOUT });
       // console.log(response);
-      navigate("/", { replace: true });
+      setTimeout(() => {
+        navigate("/", { replace: true });
+      }, 1000);
     } catch (error) {
       console.log(error);
       toast.error("Error logging out");
@@ -106,23 +112,23 @@ export const AppContext = ({ children }) => {
     try {
       const response = await axios({
         method: "POST",
-        url: "/users/register",
+        url: `${defaultURL}/register`,
         data: userData,
       });
       if (response) {
         // console.log(response);
-        dispatch({ type: ON_FULFILLED_SIGNUP, payload: response.data });
+        dispatch({ type: ON_FULFILLED_SIGNUP });
         toast.success("User registered successfully");
         window.setTimeout(() => {
           navigate("/login", { replace: true });
-        }, 1500);
+        }, 1000);
       }
       return;
     } catch (error) {
       dispatch({ type: ON_REJECTED });
       // console.log(error.response.data.message)
       if (error && error.response) {
-        toast.error(error.response.data.message ?? error.response.data);
+        toast.error(error.response.data.error ?? error.response.data);
       } else {
         toast.error(error.message);
       }

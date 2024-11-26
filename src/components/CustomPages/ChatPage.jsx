@@ -6,8 +6,10 @@ import "./styles.css";
 import Navbar from "../HomePage/Navbar";
 import axios from "axios";
 import toast from "react-hot-toast";
+import useRedirect from "../../CustomHooks/useRedirect";
 
 function ChatPage() {
+  useRedirect("/login");
   const [messages, setMessages] = useState([]);
   const [inputText, setInputText] = useState("");
   const [isLoading, setIsLoading] = useState(false);

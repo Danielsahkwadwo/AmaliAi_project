@@ -22,7 +22,7 @@ const AuthReducer = (state, action) => {
         isLoading: false,
         isSuccess: true,
         isError: false,
-        activeUser: action.payload.user,
+        activeUser: action.payload,
       };
     case ON_FULFILLED_LOGIN:
       return {
@@ -38,7 +38,7 @@ const AuthReducer = (state, action) => {
         isLoading: false,
         isSuccess: true,
         isError: false,
-        activeUser: action.payload.user,
+        // activeUser: action.payload.user,
       };
     case ON_FORGOT_PASSWORD:
       return {
