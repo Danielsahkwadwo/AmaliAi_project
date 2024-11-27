@@ -45,4 +45,13 @@ const manifestForPlugIn = {
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), VitePWA(manifestForPlugIn)],
+  // server: {
+  //   proxy: {
+  //     '/api': {
+  //       target: 'https://breast-cancer-detection-k1ym.onrender.com', // Backend URL
+  //       changeOrigin: true,
+  //       rewrite: (path) => path.replace(/^\/api/, ''),
+  //     },
+  //   },
+  // },
 })

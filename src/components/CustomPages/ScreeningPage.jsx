@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Navbar from "../HomePage/Navbar";
 import axios from "axios";
 import AppLoader from "../Reusable/AppLoader";
-import toast from 'react-hot-toast';
+import toast from "react-hot-toast";
 
 const ScreeningPage = () => {
   const [healthTip, setHealthTip] = useState("");
@@ -12,32 +12,43 @@ const ScreeningPage = () => {
     {
       title: "What is Breast Screening?",
       description:
-        "Learn the basic structure of the breast to identify abnormalities during screening.",
+        "The video provides an overview of breast screening, its purpose, methods, and importance in early detection of breast cancer.",
       videoUrl: "https://www.youtube.com/watch?v=6SAhNkuAF_4",
     },
     {
-      title: "Step 1: Visual Inspection",
+      title: "What you need to know about breast cancer",
       description:
-        "Learn how to visually inspect your breasts for any changes in size, shape, or skin texture.",
-      videoUrl: "https://www.youtube.com/watch?v=4ooGLeFucW4&list=PLy56aUjhRF4kYx38twf6FaXTNzKhyBfjh&index=13",
+        "The video offers key information on breast cancer, including risk factors, symptoms, diagnosis, treatment options, and prevention strategies.",
+      videoUrl:
+        "https://www.youtube.com/watch?v=4ooGLeFucW4&list=PLy56aUjhRF4kYx38twf6FaXTNzKhyBfjh&index=13",
     },
     {
-      title: "Step 2: Manual Examination",
+      title: "How to Perform a Breast Self-Examination",
       description:
-        "Learn proper techniques to feel for lumps or unusual masses in different parts of the breast.",
-      videoUrl: "https://example.com/video3",
+        "The video demonstrates step-by-step instructions on how to properly perform a breast self-examination to detect any unusual changes or lumps.",
+      videoUrl:
+        "https://www.youtube.com/watch?v=KF3bumQhhKw&pp=ygUdY29uZHVjdGluZyBhIHNlbGYgYnJlYXN0IGV4YW0%3D",
     },
     {
-      title: "Step 3: Screening in Front of a Mirror",
+      title: "Signs on breast you should not ignore",
       description:
-        "Learn to screen effectively using reflections to identify symmetry and skin texture.",
-      videoUrl: "https://example.com/video4",
+        "The video highlights warning signs of breast abnormalities, such as lumps, skin changes, or nipple discharge, that should prompt medical attention.",
+      videoUrl:
+        "https://www.youtube.com/watch?v=WSWPLzUJkGw&pp=ygUfd2h5IHlvdSBzaG91bGQgaGF2ZSBhIG1hbW1vZ3JhbQ%3D%3D",
     },
     {
-      title: "Step 4: Lying Down Position",
+      title: "Frequently Asked Questions About Breast Cancer",
       description:
-        "Learn how to screen while lying down for better coverage of breast tissue.",
-      videoUrl: "https://example.com/video5",
+        "The video addresses common questions about breast cancer, covering topics like risk factors, symptoms, screening, treatment, and prognosis.",
+      videoUrl:
+        "https://www.youtube.com/watch?v=Ypt-coFm6Kk&pp=ygUfd2h5IHlvdSBzaG91bGQgaGF2ZSBhIG1hbW1vZ3JhbQ%3D%3D",
+    },
+    {
+      title: "How to Recognize Breast Cancer Symptoms",
+      description:
+        "The video explains how to identify common breast cancer symptoms, such as lumps, changes in breast appearance, or unusual pain, for early detection.",
+      videoUrl:
+        "https://www.youtube.com/watch?v=yTHyMNBkbOY&pp=ygUfd2h5IHlvdSBzaG91bGQgaGF2ZSBhIG1hbW1vZ3JhbQ%3D%3D",
     },
   ];
 
@@ -63,7 +74,7 @@ const ScreeningPage = () => {
       }
     } catch (error) {
       console.log(error);
-      return toast.error('An error occurred')
+      return toast.error("An error occurred");
     } finally {
       setIsLoading(false);
     }
@@ -98,7 +109,7 @@ const ScreeningPage = () => {
         {/* Bottom Section */}
         <div className="p-8 lg:px-20 pb-20">
           <h2 className="text-2xl font-bold text-pink-700 mb-6">
-            Screening Sessions
+            Screening Sessions & FAQs
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {lessons.map((lesson, index) => (

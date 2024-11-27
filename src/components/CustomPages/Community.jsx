@@ -7,6 +7,7 @@ import EmojiPicker from "emoji-picker-react";
 import Navbar from "../HomePage/Navbar";
 import io from "socket.io-client";
 import useRedirect from "../../CustomHooks/useRedirect";
+import axios from "axios";
 
 const socket = io("http://localhost:4000");
 
@@ -61,19 +62,33 @@ function Community() {
       setMessages((prev) => [...prev, newMessage]);
       setInput("");
 
-      if (input.includes("@amali")) {
+      if (input.toLowerCase().startsWith("@amali")) {
+        
+        const mess = input.split("@amali")[1];
         // Simulate AI Response
-        setTimeout(() => {
-          const aiMessage = {
-            position: "left",
-            type: "text",
-            text: "**Amali's Response:** Here's my answer to your query.",
-            sender: "Amali",
-            date: new Date(),
-          };
-
-          setMessages((prev) => [...prev, aiMessage]);
-        }, 2000);
+        axios("https://ai-api.amalitech.org/api/v1/public/chat", {
+          method: "POST",
+          headers: { "X-Api-Key": "ZEXeGOk5_kMel9l7EzrWblpzbHM2P5FZ" },
+          data: {
+            prompt: mess,
+            stream: false,
+          },
+        })
+          .then((res) => {
+            if (res.data) {
+              const aiMessage = {
+                position: "left",
+                type: "text",
+                text: res.data.data.content,
+                sender: "amaliAi",
+                date: new Date(),
+              };
+              setMessages((prev) => [...prev, aiMessage]);
+            }
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       }
     }
   };

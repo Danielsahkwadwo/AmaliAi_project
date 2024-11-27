@@ -7,7 +7,7 @@ import AppLoader from "../Reusable/AppLoader";
 import useRedirect from "../../CustomHooks/useRedirect";
 
 function ScanImage() {
-  useRedirect("/login")
+  useRedirect("/login");
   const [image, setImage] = useState(null);
   const [result, setResult] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -52,14 +52,10 @@ function ScanImage() {
       const formData = new FormData();
       formData.append("image", imageData);
 
-      console.log(Array.from(formData));
-      const res = await axios.post(
-        "https://breast-cancer-detection-vckt.onrender.com/predict/",
-        formData,
-        {
-          headers: { "Content-Type": "multipart/form-data" },
-        }
-      );
+      // console.log(Array.from(formData));
+      const res = await axios.post("https://breast-cancer-detection-v1-1.onrender.com/predict/", formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
       if (res.data) {
         // console.log(res);
         const probability = res.data.probability;
