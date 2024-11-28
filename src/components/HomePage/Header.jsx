@@ -1,17 +1,21 @@
 import { Link } from "react-router-dom";
+import Disclaimer from "../Reusable/Disclaimer";
 
 function Header() {
   return (
     <section className="flex flex-col-reverse lg:flex-row items-center justify-between gap-10 px-10 py-10 max-w-7xl mx-auto">
       <div className="lg:w-1/2 space-y-6">
         <h1 className="text-5xl font-bold text-gray-800">
-          Breast <span className="text-pink-700 capitalize">cancer prevention</span>
+          Breast{" "}
+          <span className="text-pink-700 capitalize">cancer prevention</span>
         </h1>
         <p className="text-gray-600 leading-relaxed">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed diam
-          nonummy nibh euismod tincidunt ut laoreet dolore. Lorem, ipsum dolor
-          sit amet consectetur adipisicing elit. Nobis, consequuntur?
+          Upload your mammogram and let our advanced machine learning model
+          provide a quick prediction. Designed to assist with early
+          detection, our system empowers you with insights for better health
+          decisions. Your well-being is our priority.
         </p>
+        <Disclaimer />
         <button className="bg-pink-700 text-white px-10 py-3 rounded-full hover:bg-pink-600">
           <Link to={"/login"}>Get started &rarr;</Link>
         </button>

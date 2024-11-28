@@ -7,6 +7,7 @@ import Navbar from "../HomePage/Navbar";
 import axios from "axios";
 import toast from "react-hot-toast";
 import useRedirect from "../../CustomHooks/useRedirect";
+import Disclaimer from "../Reusable/Disclaimer";
 
 function ChatPage() {
   useRedirect("/login");
@@ -127,6 +128,7 @@ function ChatPage() {
             />
           </div>
         </div>
+        <div className="mt-5 text-center font-semibold capitalize">powered by Amali-Ai</div>
       </div>
     </div>
   );

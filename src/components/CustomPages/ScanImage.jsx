@@ -5,6 +5,7 @@ import toast from "react-hot-toast";
 import axios from "axios";
 import AppLoader from "../Reusable/AppLoader";
 import useRedirect from "../../CustomHooks/useRedirect";
+import Disclaimer from "../Reusable/Disclaimer";
 
 function ScanImage() {
   useRedirect("/login");
@@ -53,9 +54,13 @@ function ScanImage() {
       formData.append("image", imageData);
 
       // console.log(Array.from(formData));
-      const res = await axios.post("https://breast-cancer-detection-v1-1.onrender.com/predict/", formData, {
-        headers: { "Content-Type": "multipart/form-data" },
-      });
+      const res = await axios.post(
+        "https://breast-cancer-detection-v1-1.onrender.com/predict/",
+        formData,
+        {
+          headers: { "Content-Type": "multipart/form-data" },
+        }
+      );
       if (res.data) {
         // console.log(res);
         const probability = res.data.probability;
@@ -152,6 +157,9 @@ function ScanImage() {
               </p>
             )}
           </div>
+        </div>
+        <div className="mt-5">
+          <Disclaimer />
         </div>
       </div>
     </div>
