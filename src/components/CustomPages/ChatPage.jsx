@@ -24,7 +24,7 @@ function ChatPage() {
         method: "POST",
         headers: { "X-Api-Key": "ZEXeGOk5_kMel9l7EzrWblpzbHM2P5FZ" },
         data: {
-          prompt: inputText,
+          prompt: `as a breast cancer specialist, provide answer for this prompt: ${inputText}`,
           modelId: "a58c89f1-f8b6-45dc-9727-d22442c99bc3",
           stream: false,
         },
