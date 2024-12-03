@@ -31,6 +31,7 @@ function ScanImage() {
         headers: { "X-Api-Key": "ZEXeGOk5_kMel9l7EzrWblpzbHM2P5FZ" },
         data: {
           prompt: `As a breast cancer specialist, i want you to interprate a breast momograph image scan that resulted in a prediction of ${prediction} and a probability of ${probability}. try to explain it in simple terms so that it will be quite understandable`,
+          modelId: "a58c89f1-f8b6-45dc-9727-d22442c99bc3",
           stream: false,
         },
       });

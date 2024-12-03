@@ -71,6 +71,7 @@ function Community() {
           headers: { "X-Api-Key": "ZEXeGOk5_kMel9l7EzrWblpzbHM2P5FZ" },
           data: {
             prompt: mess,
+            modelId: "a58c89f1-f8b6-45dc-9727-d22442c99bc3",
             stream: false,
           },
         })

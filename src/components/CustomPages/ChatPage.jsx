@@ -25,6 +25,7 @@ function ChatPage() {
         headers: { "X-Api-Key": "ZEXeGOk5_kMel9l7EzrWblpzbHM2P5FZ" },
         data: {
           prompt: inputText,
+          modelId: "a58c89f1-f8b6-45dc-9727-d22442c99bc3",
           stream: false,
         },
       });
@@ -128,7 +129,9 @@ function ChatPage() {
             />
           </div>
         </div>
-        <div className="mt-5 text-center font-semibold capitalize">powered by Amali-Ai</div>
+        <div className="mt-5 text-center font-semibold capitalize">
+          powered by Amali-Ai
+        </div>
       </div>
     </div>
   );
