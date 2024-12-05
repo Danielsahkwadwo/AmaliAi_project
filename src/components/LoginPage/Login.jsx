@@ -124,7 +124,7 @@ function Login() {
               </Link>
             </p>
             <p className="font-semibold">
-              dont have account?{" "}
+              Don't have an account?{" "}
               <Link className="text-pink-700" to={"/register"}>
                 signup here
               </Link>

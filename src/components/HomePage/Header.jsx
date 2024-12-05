@@ -17,7 +17,7 @@ function Header() {
         </p>
         <Disclaimer />
         <button className="bg-pink-700 text-white px-10 py-3 rounded-full hover:bg-pink-600">
-          <Link to={"/login"}>Get started &rarr;</Link>
+          <Link to={"/scan"}>Get started &rarr;</Link>
         </button>
       </div>
       <div className="lg:w-1/2 mt-10 lg:mt-0">

@@ -62,7 +62,7 @@ const ScreeningPage = () => {
           headers: { "X-Api-Key": "ZEXeGOk5_kMel9l7EzrWblpzbHM2P5FZ" },
           data: {
             prompt:
-              "As a mastologist, suggest some tips to keep breast safe from breast cancer, achieve this with a maximum of two sentences and a word count of 40",
+              "As a mastologist, suggest a tip to keep breast safe from breast cancer and explain it, achieve this by making it brief and concise",
             modelId: "a58c89f1-f8b6-45dc-9727-d22442c99bc3",
             stream: false,
           },
